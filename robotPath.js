@@ -6,18 +6,18 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-function getMilk(money) {
+function getMilk() {
     rl.question("Hi, I'm the robot, how much money do I have? ", (enteredMoney) => {
         money = enteredMoney;
 
         console.log("I'm going to the market with " + money + "$ to buy some bottles of milk!");
 
-        robotPath();
+        robotPathGoing();
         askForBottlePrice(money);
 
     });
 }
-function robotPath(){
+function robotPathGoing(){
     console.log("leaveHouse");
     console.log("moveRight");
     console.log("moveRight");
@@ -27,6 +27,18 @@ function robotPath(){
     console.log("moveUp");
     console.log("moveRight");
     console.log("moveRight");
+}
+
+function robotPathcomingBack(){
+    console.log("moveLeft");
+    console.log("moveLeft");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveDown");
+    console.log("moveLeft");
+    console.log("moveLeft");
+    console.log("enterHouse");
 }
 
 function askForBottlePrice(money) {
@@ -41,15 +53,7 @@ function askForTheBottle() {
         if (answer.toLowerCase() === 'yes') {
             console.log("Okay, thank you!");
             rl.close();
-            console.log("moveLeft");
-            console.log("moveLeft");
-            console.log("moveDown");
-            console.log("moveDown");
-            console.log("moveDown");
-            console.log("moveDown");
-            console.log("moveLeft");
-            console.log("moveLeft");
-            console.log("enterHouse");
+            robotPathcomingBack();
         } else {
           console.log("ah, ok")
         }
