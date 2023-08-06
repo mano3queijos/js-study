@@ -55,8 +55,27 @@ rl.close();
 
 function test2(){
     var Msg = prompt("writte a mensage");
-    var QtdMsg = 240;
+    var QtdMsg = 10;
     var QtdMsgRest = QtdMsg - Msg.length;
-    alert("you have written: "+ Msg.length + " Characters" + ", You Have: " + QtdMsgRest + " Character left")
+
+alert(Msg.slice(0, QtdMsg));
+alert("you have written: "+ Msg.length + " Characters" + ", You Have: " + QtdMsgRest + " Character left")
 
 }
+
+function uperCase(){
+    var name = "Emanuel Santos Almeida";
+   
+
+    console.log(name + " upper case: " +  name.toUpperCase()  );
+    console.log(name.length);
+}
+uperCase();
+
+function requestName(){
+        // Receive a name and capitalize the first character of the name.
+
+    var name = prompt("What is your name?");
+    name = name.toLowerCase();
+    alert("hello "+name.slice(0,1).toUpperCase() + (name.slice(1,name.length)));
+} 
