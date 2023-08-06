@@ -79,3 +79,7 @@ function requestName(){
     name = name.toLowerCase();
     alert("hello "+name.slice(0,1).toUpperCase() + (name.slice(1,name.length)));
 } 
+function dogsAge(){
+   var Age = prompt("tell the dogs age")
+
+    alert("The human Age of the dog is: " + ((Age - 2)*4 + 21));}
