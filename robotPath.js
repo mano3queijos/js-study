@@ -9,7 +9,7 @@ function getMilk() {
   rl.question(
     "Hi, I'm the robot, how much money do I have? ",
     (enteredMoney) => {
-      money = enteredMoney;
+      let money = enteredMoney; // Declara e atribui valor à variável money
 
       console.log(
         "I'm going to the market with " +
@@ -17,59 +17,54 @@ function getMilk() {
           "$ to buy some bottles of milk!"
       );
 
-      robotPathGoing();
-      askForBottlePrice(money);
+      console.log("leaveHouse");
+      console.log("moveRight");
+      console.log("moveRight");
+      console.log("moveUp");
+      console.log("moveUp");
+      console.log("moveUp");
+      console.log("moveUp");
+      console.log("moveRight");
+      console.log("moveRight");
+
+      askForBottlePrice(money)
+        .then((change) => {
+          console.log("You will have $" + change + " left after buying milk.");
+          console.log("moveLeft");
+          console.log("moveLeft");
+          console.log("moveDown");
+          console.log("moveDown");
+          console.log("moveDown");
+          console.log("moveDown");
+          console.log("moveLeft");
+          console.log("moveLeft");
+          console.log("enterHouse");
+          rl.close();
+        })
+        .catch((error) => {
+          console.error("Error occurred:", error);
+          rl.close();
+        });
     }
   );
-}
-function robotPathGoing() {
-  console.log("leaveHouse");
-  console.log("moveRight");
-  console.log("moveRight");
-  console.log("moveUp");
-  console.log("moveUp");
-  console.log("moveUp");
-  console.log("moveUp");
-  console.log("moveRight");
-  console.log("moveRight");
-}
-
-function robotPathcomingBack() {
-  console.log("moveLeft");
-  console.log("moveLeft");
-  console.log("moveDown");
-  console.log("moveDown");
-  console.log("moveDown");
-  console.log("moveDown");
-  console.log("moveLeft");
-  console.log("moveLeft");
-  console.log("enterHouse");
 }
 
 function askForBottlePrice(money) {
-  rl.question(
-    "Hi, I'm the robot, how much does a bottle of milk cost? ",
-    (bottlePrice) => {
-      console.log(
-        "You can buy " +
-          Math.floor(money / bottlePrice) +
-          " bottles of milk with $" +
-          money
-      );
-      askForTheBottle();
-    }
-  );
-}
-
-function askForTheBottle() {
-  rl.question("Do you want to buy the bottles? (yes/no) ", (answer) => {
-    if (answer.toLowerCase() === "yes") {
-      console.log("Okay, thank you!");
-      rl.close();
-      robotPathcomingBack();
-    } else {
-      console.log("ah, ok");
-    }
+  return new Promise((resolve, reject) => {
+    rl.question(
+      "Hi, I'm the robot, how much does a bottle of milk cost? ",
+      (bottlePrice) => {
+        let price = bottlePrice;
+        console.log(
+          "You can buy " +
+            Math.floor(money / price) +
+            " bottles of milk with $" +
+            money
+        );
+        let change = money % price;
+        resolve(change);
+      }
+    );
   });
 }
 
